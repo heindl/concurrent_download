@@ -4,10 +4,10 @@ ConccurrentDownload [![archiver GoDoc](https://img.shields.io/badge/reference-go
 Package concurrent_download is a fast downloader for large files on servers that "Accept-Ranges" in bytes. It separates the download into multiple goroutines, recombines the bytes, compiles into the given output directory.
  
 
-Currently Supported formats/extensions:
+Currently supported formats/extensions:
 - .txt
 - .tar.gz
-** Additional formats are trivial with archiver (github.com/mholt/archiver) but haven't been added yet.
+__Additional formats are trivial with archiver (github.com/mholt/archiver) but haven't been added yet.__
 
 
 ## Install

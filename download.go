@@ -214,15 +214,16 @@ func (this *ranger) download() error {
 	min := this.SubsetLength * this.CurrentSubset // Min range
 	max := this.SubsetLength * (this.CurrentSubset + 1) // Max range
 	if this.IsLastSubset {
-		max += this.RemainingDiff // Add the remaining bytes in the last request
+		max += this.RemainingDiff // AddUsage the remaining bytes in the last request
 	}
 	client := http.DefaultClient
-	client.Timeout = time.Hour * 2
+	client.Timeout = time.Minute * 10
 	client.Transport = &http.Transport{
 		Dial: (&net.Dialer{
-			Timeout: time.Hour * 2,
+			Timeout: time.Minute * 10,
 		}).Dial,
-		TLSHandshakeTimeout: time.Hour * 2,
+		DisableKeepAlives: false,
+		TLSHandshakeTimeout: time.Minute * 10,
 	}
 	req, err := http.NewRequest("GET", this.FileURL, nil)
 	if err != nil {
